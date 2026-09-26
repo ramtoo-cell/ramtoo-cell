@@ -1,33 +1,91 @@
-# Ramkumar Bharathan
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+  <img alt="Ramkumar Bharathan — making autonomous AI systems auditable" src="assets/hero-light.svg" width="100%">
+</picture>
 
-**VP, Technology / Business Process Audit Innovation** — working at the intersection of AI systems and the controls that make them trustworthy.
+<br>
 
-Chicago Booth MBA (Honors) · Purdue M.S. Artificial Intelligence (in progress) · CISA (in progress)
+I work where AI systems meet the controls that make them trustworthy. By day I lead technology audit innovation at a bank. The rest of the time I build the tooling I wish existed: policy gates, guardrails, safety evals, and tamper-evident audit trails for LLMs and autonomous agents.
 
-Bank audit leader focused on AI governance and safety: model risk, audit trails, eval harnesses, red-teaming, and agentic-system safety.
+**Thesis:** an agent you can't audit is one you can't deploy. Every action should leave evidence that a regulator, an auditor, or an on-call engineer can verify afterward.
 
-## Open-source portfolio
+<br>
 
-500 repositories of working, tested code, built in public across six tracks:
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/arch-dark.svg">
+  <img alt="Reference architecture: agent loop, policy gate, runtime guard, human approval and tool execution, backed by safety evals, injection defense, drift monitoring, a kill switch, and a hash-chained audit ledger" src="assets/arch-light.svg" width="100%">
+</picture>
 
-| Track | Focus | Repos |
-|---|---|---|
-| A | AI governance — policy engines, hash-chained audit trails, EU AI Act / NIST RMF mapping, bias, hallucination & injection detection | 50 |
-| B | Agentic AI — ReAct loops, memory stores, MCP servers/clients, RAG agents, orchestration | 50 |
-| C | AI safety & alignment — interpretability, deception/sycophancy evals, oversight & debate, unlearning, watermarking | 100 |
-| D | Advanced agentic systems — planner-executor-critic, swarms, sandboxes, skill libraries, agent CI/CD eval gates | 100 |
-| E | Governance at scale — continuous compliance monitors, model inventory & lineage, audit automation | 100 |
-| F | AGI-direction research engineering — world models, meta-learning, scaling laws, synthetic-data flywheels, self-improvement | 100 |
+## Work, by layer
 
-Browse it all: **[ai-portfolio-index](https://github.com/ramtoo-cell/ai-portfolio-index)**
+250+ public repositories. Each one is small, self-contained, and tested, and does one thing. **[Browse the full index →](https://github.com/ramtoo-cell/ai-portfolio-index)**
 
-Featured: [ai-governance-audit-trail](https://github.com/ramtoo-cell/ai-governance-audit-trail) — tamper-evident, hash-chained audit ledger for AI systems.
+<table>
+<tr>
+<td width="33%" valign="top">
 
-## Patents & research
+**🛡️ AI safety & alignment**<br>
+<sub>100 repos</sub>
 
-- Two AI patent applications pending; four published AI disclosures.
-- Building in public on AI audit, governance, and agent safety.
+Red-teaming, interpretability, unlearning, watermarking, calibration.
 
-## Connect
+- [jailbreak-fuzzer](https://github.com/ramtoo-cell/ai-safety-jailbreak-fuzzer)
+- [layered-defense](https://github.com/ramtoo-cell/ai-safety-layered-defense)
+- [tripwire-eval](https://github.com/ramtoo-cell/ai-safety-tripwire-eval)
+- [circuit-graph](https://github.com/ramtoo-cell/ai-safety-circuit-graph)
+- [gradient-unlearning](https://github.com/ramtoo-cell/ai-safety-gradient-unlearning)
+- [watermark-greenlist](https://github.com/ramtoo-cell/ai-safety-watermark-greenlist)
 
-- GitHub: [@ramtoo-cell](https://github.com/ramtoo-cell)
+</td>
+<td width="33%" valign="top">
+
+**⚖️ AI governance & audit**<br>
+<sub>50 repos</sub>
+
+Controls, evidence, regulatory mapping, incident response.
+
+- [audit-trail](https://github.com/ramtoo-cell/ai-governance-audit-trail)
+- [policy-engine](https://github.com/ramtoo-cell/ai-governance-policy-engine)
+- [eu-ai-act-mapper](https://github.com/ramtoo-cell/ai-governance-eu-ai-act-mapper)
+- [control-mapper](https://github.com/ramtoo-cell/ai-governance-control-mapper)
+- [model-risk-register](https://github.com/ramtoo-cell/ai-governance-model-risk-register)
+- [kill-switch](https://github.com/ramtoo-cell/ai-governance-kill-switch)
+
+</td>
+<td width="33%" valign="top">
+
+**🤖 Agentic systems**<br>
+<sub>100 repos</sub>
+
+Agent loops, memory, MCP, orchestration, sandboxing, markets.
+
+- [react-loop](https://github.com/ramtoo-cell/agent-react-loop)
+- [mcp-server](https://github.com/ramtoo-cell/agent-mcp-server)
+- [hitl-approvals](https://github.com/ramtoo-cell/agent-hitl-approvals)
+- [fs-jail](https://github.com/ramtoo-cell/agentic-fs-jail)
+- [contract-net](https://github.com/ramtoo-cell/agentic-contract-net)
+- [trajectory-replayer](https://github.com/ramtoo-cell/agent-trajectory-replayer)
+
+</td>
+</tr>
+</table>
+
+## How I build
+
+| Principle | In practice |
+|---|---|
+| **Evidence over assertion** | Decisions, prompts, and tool calls are hash-chained and can be replayed. If it wasn't logged, it didn't happen. |
+| **Default deny** | Egress, file system, tools, and quotas start closed. Agents get capabilities one at a time, on purpose. |
+| **Small, sharp primitives** | One concern per repo, standard library first, and deterministic tests. You can adopt one piece without taking all of them. |
+| **Controls map to frameworks** | Every control traces to the EU AI Act, NIST AI RMF, ISO 42001, or SOC 2, so audit is a query instead of a project. |
+| **Humans hold the keys** | Approval queues, escalation ladders, and a two-person kill switch. Autonomy is granted, never assumed. |
+
+## Background
+
+- **Education:** Chicago Booth MBA (Honors) · Purdue M.S. Artificial Intelligence *(in progress)* · CISA *(in progress)*
+- **Research:** two AI patent applications pending · four published AI disclosures
+- **Focus:** model risk, AI audit trails, eval harnesses, red-teaming, agent safety
+
+<br>
+
+<sub>Building in public. If you work on AI assurance, agent safety, or audit automation, let's talk. Open an issue on any repo.</sub>

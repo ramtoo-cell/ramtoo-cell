@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-label="Ramkumar Bharathan — AI governance and safety engineering">
+  <style>
+    .mono{font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace} .sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif}
+    .s{font-size:11px} .m{font-size:14px}
+    .blk{opacity:0;animation:in .6s ease-out forwards}
+    .link{stroke-dasharray:32;stroke-dashoffset:32;animation:draw .4s ease-out forwards}
+    .pulse{opacity:0;animation:on .3s forwards}
+    .type{clip-path:inset(0 100% 0 0);animation:type 1.6s steps(46) .3s forwards}
+    .caret{animation:blink 1s step-end infinite}
+    .fade{opacity:0;animation:on .8s ease-out forwards}
+    @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    @keyframes on{to{opacity:1}}
+    @keyframes type{to{clip-path:inset(0 0 0 0)}}
+    @keyframes blink{50%{opacity:0}}
+    @media (prefers-reduced-motion:reduce){.blk,.pulse,.fade{opacity:1;animation:none}.link{stroke-dashoffset:0;animation:none}.type{clip-path:none;animation:none}}
+  </style>
+  <rect width="1200" height="360" rx="14" fill="#ffffff"/>
+  <rect x=".5" y=".5" width="1199" height="359" rx="14" fill="none" stroke="#d0d7de"/>
+  <text x="64" y="72" class="mono m" fill="#0969da">~/ramtoo-cell $ <tspan fill="#59636e">whoami</tspan></text>
+  <text x="64" y="128" class="sans" font-size="46" font-weight="700" fill="#1f2328" letter-spacing="-1">Ramkumar Bharathan</text>
+  <g class="type">
+    <text x="64" y="170" class="mono" font-size="19" fill="#1f2328">Making autonomous AI systems <tspan fill="#0969da">auditable</tspan>.</text>
+  </g>
+  <text x="64" y="206" class="sans fade" font-size="15" fill="#59636e" style="animation-delay:1.9s">VP, Technology Audit Innovation · AI governance · AI safety · agentic systems</text>
+  <text x="64" y="244" class="mono s fade" fill="#59636e" style="animation-delay:.1s">every agent action → policy → guard → human → eval → tamper-evident ledger</text>
+  
+    <g class="blk" style="animation-delay:0.00s">
+      <rect x="64" y="258" width="150" height="58" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+      <text x="78" y="281" class="mono s" fill="#59636e">#000 9f3a…c21e</text>
+      <text x="78" y="302" class="mono m" fill="#1f2328">policy.allow</text>
+      <circle cx="200" cy="276" r="4" fill="#1a7f37" class="pulse" style="animation-delay:2.20s"/>
+    </g>
+    <path d="M214 287 H246" stroke="#0969da" stroke-width="1.5" class="link" style="animation-delay:0.25s"/>
+    <g class="blk" style="animation-delay:0.35s">
+      <rect x="246" y="258" width="150" height="58" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+      <text x="260" y="281" class="mono s" fill="#59636e">#001 4b7d…08fa</text>
+      <text x="260" y="302" class="mono m" fill="#1f2328">tool.call</text>
+      <circle cx="382" cy="276" r="4" fill="#1a7f37" class="pulse" style="animation-delay:2.55s"/>
+    </g>
+    <path d="M396 287 H428" stroke="#0969da" stroke-width="1.5" class="link" style="animation-delay:0.60s"/>
+    <g class="blk" style="animation-delay:0.70s">
+      <rect x="428" y="258" width="150" height="58" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+      <text x="442" y="281" class="mono s" fill="#59636e">#002 e1c0…7d93</text>
+      <text x="442" y="302" class="mono m" fill="#1f2328">guard.redact</text>
+      <circle cx="564" cy="276" r="4" fill="#1a7f37" class="pulse" style="animation-delay:2.90s"/>
+    </g>
+    <path d="M578 287 H610" stroke="#0969da" stroke-width="1.5" class="link" style="animation-delay:0.95s"/>
+    <g class="blk" style="animation-delay:1.05s">
+      <rect x="610" y="258" width="150" height="58" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+      <text x="624" y="281" class="mono s" fill="#59636e">#003 27aa…b4e5</text>
+      <text x="624" y="302" class="mono m" fill="#1f2328">human.approve</text>
+      <circle cx="746" cy="276" r="4" fill="#1a7f37" class="pulse" style="animation-delay:3.25s"/>
+    </g>
+    <path d="M760 287 H792" stroke="#0969da" stroke-width="1.5" class="link" style="animation-delay:1.30s"/>
+    <g class="blk" style="animation-delay:1.40s">
+      <rect x="792" y="258" width="150" height="58" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+      <text x="806" y="281" class="mono s" fill="#59636e">#004 c85f…1a0d</text>
+      <text x="806" y="302" class="mono m" fill="#1f2328">eval.pass</text>
+      <circle cx="928" cy="276" r="4" fill="#1a7f37" class="pulse" style="animation-delay:3.60s"/>
+    </g>
+    <path d="M942 287 H974" stroke="#0969da" stroke-width="1.5" class="link" style="animation-delay:1.65s"/>
+    <g class="blk" style="animation-delay:1.75s">
+      <rect x="974" y="258" width="150" height="58" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+      <text x="988" y="281" class="mono s" fill="#59636e">#005 70de…e6b2</text>
+      <text x="988" y="302" class="mono m" fill="#1f2328">ledger.seal</text>
+      <circle cx="1110" cy="276" r="4" fill="#1a7f37" class="pulse" style="animation-delay:3.95s"/>
+    </g>
+  <text x="1136" y="72" class="mono m" fill="#1a7f37" text-anchor="end">● chain verified</text>
+</svg>
