@@ -16,6 +16,16 @@ I work where AI systems meet the controls that make them trustworthy. By day I l
   <img alt="Reference architecture: agent loop, policy gate, runtime guard, human approval and tool execution, backed by safety evals, injection defense, drift monitoring, a kill switch, and a hash-chained audit ledger" src="assets/arch-light.svg" width="100%">
 </picture>
 
+## ⭐ Featured flagship
+
+**[agent-guardian](https://github.com/ramtoo-cell/agent-guardian)** — a pip-installable governance sidecar for AI agents. Wrap any agent and get policy enforcement (blocklists, PII redaction, prompt-injection detection), budgets (steps, tokens, cost, latency), a tamper-evident hash-chained audit log, built-in red-team evals with a scorecard, and a CLI that writes a Markdown governance report. Zero dependencies, fully tested.
+
+```bash
+pip install agent-guardian
+```
+
+<br>
+
 ## Work, by layer
 
 250+ public repositories. Each one is small, self-contained, and tested, and does one thing. **[Browse the full index →](https://github.com/ramtoo-cell/ai-portfolio-index)**
