@@ -16,12 +16,28 @@ I work where AI systems meet the controls that make them trustworthy. By day I l
   <img alt="Reference architecture: agent loop, policy gate, runtime guard, human approval and tool execution, backed by safety evals, injection defense, drift monitoring, a kill switch, and a hash-chained audit ledger" src="assets/arch-light.svg" width="100%">
 </picture>
 
-## ⭐ Featured flagship
+## ⭐ Flagship projects
 
-**[agent-guardian](https://github.com/ramtoo-cell/agent-guardian)** — a pip-installable governance sidecar for AI agents. Wrap any agent and get policy enforcement (blocklists, PII redaction, prompt-injection detection), budgets (steps, tokens, cost, latency), a tamper-evident hash-chained audit log, built-in red-team evals with a scorecard, and a CLI that writes a Markdown governance report. Zero dependencies, fully tested.
+### [agentgate](https://github.com/ramtoo-cell/agentgate) &nbsp;[![ci](https://github.com/ramtoo-cell/agentgate/actions/workflows/ci.yml/badge.svg)](https://github.com/ramtoo-cell/agentgate/actions/workflows/ci.yml)
+
+**Policy, human approval, and a tamper-evident audit trail for every AI agent tool call.** Use it as a Python decorator, or as a drop-in **MCP proxy** in front of any MCP server (Claude Desktop, Cursor) with zero code changes.
+
+- Default-deny JSON policies. Tools the agent can never use are hidden from the model entirely.
+- Hash-chained, optionally HMAC-keyed audit ledger. `agentgate verify` pinpoints the first tampered line.
+- Pluggable human approval (Slack, tickets, any executable), plus secret/PII redaction and rate limits.
+- **~65 µs per call** after profiling-driven optimization (4× faster than v0.1). Zero dependencies, 60 tests, 95% coverage, CI on Python 3.9–3.13.
+- Google-style [design doc with threat model](https://github.com/ramtoo-cell/agentgate/blob/main/docs/DESIGN.md), tested end to end against the reference MCP filesystem server.
 
 ```bash
-pip install agent-guardian
+pip install git+https://github.com/ramtoo-cell/agentgate
+```
+
+### [agent-guardian](https://github.com/ramtoo-cell/agent-guardian)
+
+A governance sidecar for AI agents. Wrap any agent to get policy enforcement (blocklists, PII redaction, prompt-injection detection), budgets (steps, tokens, cost, latency), a tamper-evident audit log, and built-in red-team evals with a scorecard. A CLI writes a Markdown governance report.
+
+```bash
+pip install git+https://github.com/ramtoo-cell/agent-guardian
 ```
 
 <br>
