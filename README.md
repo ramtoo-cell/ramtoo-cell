@@ -1,11 +1,11 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
-  <img alt="Ramkumar Bharathan — making autonomous AI systems auditable" src="assets/hero-light.svg" width="100%">
+  <img alt="Ram kumar — making autonomous AI systems auditable" src="assets/hero-light.svg" width="100%">
 </picture>
 
 <br>
 
-I work where AI systems meet the controls that make them trustworthy. By day I lead technology audit innovation at a bank. The rest of the time I build the tooling I wish existed: policy gates, guardrails, safety evals, and tamper-evident audit trails for LLMs and autonomous agents.
+I work where AI systems meet the controls that make them trustworthy. By day I lead technology audit innovation at a F-10 company. The rest of the time I build the tooling I wish existed: policy gates, guardrails, safety evals, and tamper-evident audit trails for LLMs and autonomous agents.
 
 **Thesis:** an agent you can't audit is one you can't deploy. Every action should leave evidence that a regulator, an auditor, or an on-call engineer can verify afterward.
 
