@@ -7,21 +7,32 @@
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ramkumar-bharathan-vicepresidenttechnologybusinessprocessauditinnovation)
 [![Booth Story](https://img.shields.io/badge/Chicago_Booth-Featured_Story-800000)](https://www.chicagobooth.edu/why-booth/stories/from-a-small-village-to-an-executive-mba)
+[![ControlTrace](https://img.shields.io/badge/⚖️_controltrace-PCAOB_AS_1105_%7C_ISA_500-2ea043)](https://github.com/ramtoo-cell/controltrace)
 [![Fellowship Dossier](https://img.shields.io/badge/🏛️_Conceptual_Reasoning_Dossier-2027-orange)](https://github.com/ramtoo-cell/anthropic-fellowships-2027)
-[![frontier-reasoning-bench](https://img.shields.io/badge/🧠_frontier--reasoning--bench-10%2F10_Passing-2ea043)](https://github.com/ramtoo-cell/frontier-reasoning-bench)
-[![agentgate](https://img.shields.io/badge/⚡_agentgate-~65_µs_MCP_Proxy-0969da)](https://github.com/ramtoo-cell/agentgate)
+[![frontier-reasoning-bench](https://img.shields.io/badge/🧠_frontier--reasoning--bench-10%2F10_Passing-0969da)](https://github.com/ramtoo-cell/frontier-reasoning-bench)
+[![agentgate](https://img.shields.io/badge/⚡_agentgate-~65_µs_MCP_Proxy-8250df)](https://github.com/ramtoo-cell/agentgate)
 
 I build **verifiable evaluation harnesses for judgment-heavy AI reasoning** and **zero-trust runtime infrastructure for autonomous agents**. 
 
-Where code and math have compilers, the hardest real-world decisions— across **economics, law, public policy, cognitive science, and philosophy**—have no single checkable unit test. Models routinely sound persuasive while violating game-theoretic equilibria, conflating empirical facts with normative obligations, or misapplying statutory canons. By day I lead technology audit innovation at Fortune-10 scale; the rest of the time I engineer deterministic invariant verifiers, calibration harnesses, and sub-100µs Model Context Protocol (MCP) security proxies.
+Where code and math have compilers, the hardest real-world decisions—across **policy, law, audit judgment, economics, cognitive science, and philosophy**—have no single checkable answer key. Models routinely sound persuasive while treating uncorroborated allegations as proof, violating game-theoretic equilibria, or conflating empirical facts with normative obligations. With nearly two decades of practicing codified evidentiary judgment across Fortune-10 technology audits (16 years at PwC across India, Dubai, and the US serving Google, Meta, Microsoft, and Amazon; writing internal audit and IT SOX playbooks for Google and Microsoft; working on the Waymo and Tesla external audits; and now leading cloud, cyber, and AI audits at a Fortune-10 global financial institution), I build benchmarks and RL environments that test whether AI agents reach conclusions on **sufficient, appropriate evidence** rather than surface salience.
 
-**Core Thesis:** *A model that cannot prove its intermediate reasoning under formal constraints cannot be trusted with the decision; an agent whose tool calls cannot be cryptographically audited cannot be deployed in production.*
+**Core Thesis:** *Auditors learn early that the most dangerous error is not the wrong conclusion, but the right one reached for the wrong reasons. It passes review, and it fails precisely when the facts shift.*
 
 ---
 
-## 🧠 1. Conceptual Reasoning Evals & Process Supervision
+## 🧠 1. Conceptual Reasoning Evals & Evidentiary Faithfulness
 
-A complete, zero-dependency evaluation stack for testing whether frontier models (**Claude, Gemini, o-series**) genuinely reason through constraints rather than recite memorized patterns:
+A complete, zero-dependency evaluation stack for testing whether frontier models (**Claude, Gemini, o-series**) separate allegation from proof and reason faithfully through domain constraints:
+
+### [`controltrace`](https://github.com/ramtoo-cell/controltrace) &nbsp;[![PCAOB AS 1105](https://img.shields.io/badge/rubric-PCAOB_AS_1105_%7C_ISA_500-0969da.svg)](https://github.com/ramtoo-cell/controltrace) [![Pilot](https://img.shields.io/badge/pilot-6_cases_%2B_minimal_pairs-brightgreen.svg)](https://github.com/ramtoo-cell/controltrace)
+**Teaching AI agents the difference between allegation and proof — evaluating professional skepticism and calibrated escalation:**
+- **External Normative Anchor:** Ground truth is anchored in codified audit-evidence standards (**PCAOB AS 1105**, **ISA 500**): independent confirmations and cryptographic telemetry outrank internal management assertions, and an uncorroborated complaint is not proof.
+- **Three-Axis Separation:** Scores **(1) Conclusion Accuracy**, **(2) Evidence Faithfulness** (whether the agent cites excluded red herrings or unsubstantiated allegations), and **(3) Escalation Calibration** (`resolve` vs. `escalate`, plus minimal pairs that flip on a single piece of corroborating evidence).
+- **Pilot Finding (6 cases, blind Claude baseline, 1 sample/case):** Reached the right outcome in **5 of 6** cases, yet cited evidence that should have been excluded in **5 of 6** cases—and in **1 of 6** (`CT-001`) correctly computed that a vendor's disclosure had lapsed >3 years earlier, then treated an unsubstantiated competitor complaint as proof of a violation and escalated it. *(Explicit [Limitations section](https://github.com/ramtoo-cell/controltrace#limitations-stated-plainly) documented in repo; held-out ground truth kept private via SHA-256 commitments.)*
+
+```bash
+git clone https://github.com/ramtoo-cell/controltrace && cd controltrace && PYTHONPATH=src python3 -m controltrace.cli
+```
 
 ### [`frontier-reasoning-bench`](https://github.com/ramtoo-cell/frontier-reasoning-bench) &nbsp;[![evals](https://img.shields.io/badge/invariants-10%2F10_passing-brightgreen.svg)](https://github.com/ramtoo-cell/frontier-reasoning-bench) [![Design Doc](https://img.shields.io/badge/docs-DESIGN.md-blue.svg)](https://github.com/ramtoo-cell/frontier-reasoning-bench/blob/main/docs/DESIGN.md)
 **Step-level invariant verification & process-supervision reward oracles across all 5 conceptual disciplines:**
@@ -95,6 +106,7 @@ Every repository is a small, sharp, self-contained primitive: zero external depe
 
 Red-teaming, interpretability, unlearning, watermarking, calibration.
 
+- [controltrace](https://github.com/ramtoo-cell/controltrace)
 - [frontier-reasoning-bench](https://github.com/ramtoo-cell/frontier-reasoning-bench)
 - [policy-reasoning-bench](https://github.com/ramtoo-cell/policy-reasoning-bench)
 - [reasoning-eval-harness](https://github.com/ramtoo-cell/reasoning-eval-harness)
