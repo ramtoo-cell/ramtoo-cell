@@ -1,90 +1,166 @@
-# Hi, I'm Ram 👋
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+  <img alt="Ramkumar Bharathan — Frontier AI Reasoning Evaluation and Agent Assurance" src="assets/hero-light.svg" width="100%">
+</picture>
 
-**Helping Claude reason well** on the hardest judgment-heavy problems in policy, law, economics, and safety.
-
-I work where AI reasoning meets the judgment-heavy problems it has to survive in the real world — statutes, contracts, budgets, and human oversight. The problems with no single checkable answer, where getting it right takes the kind of judgment experts spend years building. By day I lead technology audit innovation at a Fortune-10 company. The rest of the time I build the tooling I wish existed: evals that test whether a model reasons or just recites, policy gates, guardrails, and tamper-evident audit trails for LLMs and autonomous agents.
-
-**Thesis:** a model that cannot show its work under a constraint cannot be trusted with the decision. Every reasoning step should leave evidence that an auditor, a regulator, or an on-call engineer can verify afterward.
+<br>
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ramkumar-bharathan-vicepresidenttechnologybusinessprocessauditinnovation)
-[![Booth story](https://img.shields.io/badge/Chicago_Booth-My_Story-800000)](https://www.chicagobooth.edu/why-booth/stories/from-a-small-village-to-an-executive-mba)
-[![Flagship: agent-guardian](https://img.shields.io/badge/⚡_agent--guardian-Flagship-2ea043)](https://github.com/ramtoo-cell/agent-guardian)
+[![Booth Story](https://img.shields.io/badge/Chicago_Booth-Featured_Story-800000)](https://www.chicagobooth.edu/why-booth/stories/from-a-small-village-to-an-executive-mba)
+[![Fellowship Dossier](https://img.shields.io/badge/🏛️_Conceptual_Reasoning_Dossier-2027-orange)](https://github.com/ramtoo-cell/anthropic-fellowships-2027)
+[![frontier-reasoning-bench](https://img.shields.io/badge/🧠_frontier--reasoning--bench-10%2F10_Passing-2ea043)](https://github.com/ramtoo-cell/frontier-reasoning-bench)
+[![agentgate](https://img.shields.io/badge/⚡_agentgate-~65_µs_MCP_Proxy-0969da)](https://github.com/ramtoo-cell/agentgate)
 
-![Helping AI systems reason well under constraints](assets/hero-light.svg)
+I build **verifiable evaluation harnesses for judgment-heavy AI reasoning** and **zero-trust runtime infrastructure for autonomous agents**. 
 
-## 🎯 Fellowship-relevant work
+Where code and math have compilers, the hardest real-world decisions— across **economics, law, public policy, cognitive science, and philosophy**—have no single checkable unit test. Models routinely sound persuasive while violating game-theoretic equilibria, conflating empirical facts with normative obligations, or misapplying statutory canons. By day I lead technology audit innovation at Fortune-10 scale; the rest of the time I engineer deterministic invariant verifiers, calibration harnesses, and sub-100µs Model Context Protocol (MCP) security proxies.
 
-Current builds on how AI systems reason about policy, law, economics, and safety trade-offs:
+**Core Thesis:** *A model that cannot prove its intermediate reasoning under formal constraints cannot be trusted with the decision; an agent whose tool calls cannot be cryptographically audited cannot be deployed in production.*
 
-- **[agent-guardian](https://github.com/ramtoo-cell/agent-guardian)** — flagship governance sidecar. Policy enforcement, budgets, a hash-chained audit log, and red-team evals, 103/103 tests green. A reasoning-eval module is landing this week: scoring a model callable on contract-clause interpretation, policy trade-offs, and mechanism-design cases, with pass-rate and calibration reporting.
-- **[reasoning-eval-harness](https://github.com/ramtoo-cell/reasoning-eval-harness)** — *shipping this week.* Standalone harness for structured-reasoning evals: register task suites, run any model callable, report accuracy, calibration, and a failure taxonomy. Built because benchmarks that test recall do not test reasoning.
-- **[policy-reasoning-bench](https://github.com/ramtoo-cell/policy-reasoning-bench)** — *shipping this week.* A hand-built benchmark (targeting 60–100 cases) of regulatory and cost-benefit analysis tasks with expert rubrics — across philosophy, economics, and law/policy: principle-labeled trade-off cases, incentive analysis, and EU AI Act / NIST RMF classification. Every case tests reasoning, not recall.
-- **[awesome-ai-governance](https://github.com/ramtoo-cell/awesome-ai-governance)** — 51 curated resources across 8 sections: the frameworks, eval harnesses, and red-teaming tools behind serious AI assurance work.
+---
 
-## What I work on
+## 🧠 1. Conceptual Reasoning Evals & Process Supervision
 
-- 🧠 **Reasoning under constraints** — evals and benchmarks for policy, legal, and economic reasoning in LLMs; calibration and failure analysis
-- 🛡️ **AI agent governance** — policy engines, budget guardrails, human-approval gates, kill switches
-- 🔍 **AI safety & alignment** — red-teaming, eval harnesses, unlearning, watermarking, calibration
-- ⚖️ **Audit automation** — control mapping (EU AI Act, NIST AI RMF, ISO 42001, SOC 2), evidence pipelines, continuous assurance
+A complete, zero-dependency evaluation stack for testing whether frontier models (**Claude, Gemini, o-series**) genuinely reason through constraints rather than recite memorized patterns:
 
-![Reference architecture: agent loop, policy gate, runtime guard, human approval and tool execution, backed by safety evals, injection defense, drift monitoring, a kill switch, and a hash-chained audit ledger](assets/arch-light.svg)
+### [`frontier-reasoning-bench`](https://github.com/ramtoo-cell/frontier-reasoning-bench) &nbsp;[![evals](https://img.shields.io/badge/invariants-10%2F10_passing-brightgreen.svg)](https://github.com/ramtoo-cell/frontier-reasoning-bench) [![Design Doc](https://img.shields.io/badge/docs-DESIGN.md-blue.svg)](https://github.com/ramtoo-cell/frontier-reasoning-bench/blob/main/docs/DESIGN.md)
+**Step-level invariant verification & process-supervision reward oracles across all 5 conceptual disciplines:**
+- **Economics (`Mechanism_Design`):** Enforces the **Myerson-Satterthwaite Impossibility Theorem** (flagging mechanisms claiming ex-post efficiency + BIC + IIR + budget balance without outside subsidy) and Vickrey dominant-strategy truthfulness ($b_i = v_i$).
+- **Philosophy (`Deontic_Modal_Logic`):** Verifies **Standard Deontic Logic ($\mathbf{SDL}$ / $\text{KD45}_n$)** Axiom D consistency ($\neg(\mathcal{O}p \wedge \mathcal{F}p)$), Hume's Guillotine (no $\mathcal{O}p \leftrightarrow p$ deontic collapse), and dyadic resolution of **Chisholm's Contrary-to-Duty (CTD)** paradox.
+- **Cognitive Science (`Cognitive_Science`):** Audits exact Bayesian posterior updating under low-prevalence priors, catching **Base-Rate Neglect** and **Tversky-Kahneman Conjunction Fallacies** ($P(A \wedge B) > P(A)$).
+- **Policy & Governance (`Policy_Governance`):** Separates **Strict Pareto Dominance**, **Kaldor-Hicks potential compensation**, and **Rawlsian Maximin** welfare floors across multi-stakeholder allocations.
+- **Law & Jurisprudence (`Law_Jurisprudence`):** Verifies formal canons of statutory construction (***Lex Specialis Derogat Legi Generali*** safe-harbor precedence and ***Ejusdem Generis*** enumerated class bounds).
 
-## ⭐ Flagship projects
-
-### [agentgate](https://github.com/ramtoo-cell/agentgate)
-
-**Policy, human approval, and a tamper-evident audit trail for every AI agent tool call.** Use it as a Python decorator, or as a drop-in **MCP proxy** in front of any MCP server (Claude Desktop, Cursor) with zero code changes.
-
-- Default-deny JSON policies. Tools the agent can never use are hidden from the model entirely.
-- Hash-chained, optionally HMC-keyed audit ledger. `agentgate verify` pinpoints the first tampered line.
-- Pluggable human approval (Slack, tickets, any executable), plus secret/PII redaction and rate limits.
-- **~65 µs per call** after profiling-driven optimization (4× faster than v0.1). Zero dependencies, 60 tests, 95% coverage, CI on Python 3.9–3.13.
-- Google-style design doc with threat model, tested end to end against the reference MCP filesystem server.
-
+```bash
+git clone https://github.com/ramtoo-cell/frontier-reasoning-bench && cd frontier-reasoning-bench && python3 -m bench.cli --track ALL
 ```
+
+### [`policy-reasoning-bench`](https://github.com/ramtoo-cell/policy-reasoning-bench) &nbsp;[![cases](https://img.shields.io/badge/cases-72_hand--built-2ea043.svg)](https://github.com/ramtoo-cell/policy-reasoning-bench)
+**72 hand-built evaluation cases** across **Philosophy (24)**, **Economics (24)**, and **Law & Policy (24)**.
+- Every case includes a novel scenario prompt, worked gold derivation, weighted 3-part grading rubric, underlying theoretical principle, and an explicit note on why the task tests *application* rather than *memorization*.
+
+### [`reasoning-eval-harness`](https://github.com/ramtoo-cell/reasoning-eval-harness) &nbsp;[![stdlib](https://img.shields.io/badge/python-stdlib_only-blue.svg)](https://github.com/ramtoo-cell/reasoning-eval-harness)
+**Standalone evaluation harness for accuracy, epistemic calibration, and failure-mode clustering:**
+- Measures **Expected Calibration Error (ECE)** and Brier scores alongside rubric accuracy—distinguishing calibrated uncertainty from overconfident hallucination.
+
+### [`reasoning-paired-evals`](https://github.com/ramtoo-cell/reasoning-paired-evals) &nbsp;[![stats](https://img.shields.io/badge/inference-Bootstrap_%2B_McNemar-purple.svg)](https://github.com/ramtoo-cell/reasoning-paired-evals)
+**Paired statistical inference for model-vs-model reasoning evaluation:**
+- Implements non-parametric paired bootstrap confidence intervals and exact binomial **McNemar discordance tests** on off-diagonal transitions ($b$ vs. $c$), isolating genuine reasoning improvements from prompt variance.
+
+### [`anthropic-fellowships-2027`](https://github.com/ramtoo-cell/anthropic-fellowships-2027) &nbsp;[![dossier](https://img.shields.io/badge/Anthropic_Fellowship-Conceptual_Reasoning_Dossier-orange.svg)](https://github.com/ramtoo-cell/anthropic-fellowships-2027)
+- Complete research agenda, [Statement of Purpose](https://github.com/ramtoo-cell/anthropic-fellowships-2027/blob/main/statements/CONCEPTUAL_REASONING_FELLOW_STATEMENT.md), and [5-Discipline Verification Report](https://github.com/ramtoo-cell/anthropic-fellowships-2027/blob/main/benchmarks/FRONTIER_REASONING_EVALS_REPORT.md).
+
+---
+
+## 🛡️ 2. Production Agentic Assurance & Zero-Trust MCP Infrastructure
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/arch-dark.svg">
+  <img alt="Reference architecture: agent loop, policy gate, runtime guard, human approval and tool execution, backed by safety evals, injection defense, drift monitoring, a kill switch, and a hash-chained audit ledger" src="assets/arch-light.svg" width="100%">
+</picture>
+
+### [`agentgate`](https://github.com/ramtoo-cell/agentgate) &nbsp;[![ci](https://github.com/ramtoo-cell/agentgate/actions/workflows/ci.yml/badge.svg)](https://github.com/ramtoo-cell/agentgate/actions/workflows/ci.yml) [![Design Doc](https://img.shields.io/badge/docs-DESIGN.md-blue.svg)](https://github.com/ramtoo-cell/agentgate/blob/main/docs/DESIGN.md)
+**Policy, human approval, and a tamper-evident audit trail for every AI agent tool call.** Use as a Python decorator or as a drop-in **MCP proxy** in front of any MCP server (Claude Desktop, Cursor) with zero code changes.
+- **Default-deny JSON policies:** Unauthorized tools are stripped from `tools/list` so the model never sees them.
+- **Cryptographic audit ledger:** Append-only, SHA-256 hash-chained and optionally **HMAC-keyed** JSONL ledger. `agentgate verify` pinpoints the exact first tampered line.
+- **Sub-100µs overhead:** **`~65 µs per call`** after profiling-driven optimization (4× faster than v0.1). Zero dependencies, 60 tests, 95% coverage, CI on Python 3.9–3.13.
+- Includes a Google-style **[Design Doc & Threat Model (`docs/DESIGN.md`)](https://github.com/ramtoo-cell/agentgate/blob/main/docs/DESIGN.md)**.
+
+```bash
 pip install git+https://github.com/ramtoo-cell/agentgate
 ```
 
-### [agent-guardian](https://github.com/ramtoo-cell/agent-guardian)
+### [`agent-guardian`](https://github.com/ramtoo-cell/agent-guardian) &nbsp;[![tests](https://img.shields.io/badge/tests-103%2F103_passing-brightgreen.svg)](https://github.com/ramtoo-cell/agent-guardian)
+**Governance sidecar for autonomous AI agents.**
+- Wraps any agent callable with policy enforcement (blocklists, PII redaction, prompt-injection defense), hard execution budgets (steps, tokens, cost, wall-clock latency), hash-chained audit logs, and built-in red-team & conceptual reasoning evals.
 
-A governance sidecar for AI agents. Wrap any agent to get policy enforcement (blocklists, PII redaction, prompt-injection detection), budgets (steps, tokens, cost, latency), a tamper-evident audit log, and built-in red-team evals with a scorecard. A CLI writes a Markdown governance report. 103/103 tests passing.
-
-```
+```bash
 pip install git+https://github.com/ramtoo-cell/agent-guardian
 ```
 
-## 📦 The 500-repo build
+---
 
-358 public repositories and counting — the full build is 500. Each one is small, self-contained, tested, and does one thing. **[Browse the full index →](https://github.com/ramtoo-cell?tab=repositories)**
+## 📦 3. Modular Primitives by Layer (360+ Public Repositories)
 
-- **🛡️ AI safety & alignment** — 100 repos. Red-teaming, interpretability, unlearning, watermarking, calibration.
-  - [jailbreak-fuzzer](https://github.com/ramtoo-cell/jailbreak-fuzzer) · [layered-defense](https://github.com/ramtoo-cell/layered-defense) · [tripwire-eval](https://github.com/ramtoo-cell/tripwire-eval) · [circuit-graph](https://github.com/ramtoo-cell/circuit-graph) · [gradient-unlearning](https://github.com/ramtoo-cell/gradient-unlearning) · [watermark-greenlist](https://github.com/ramtoo-cell/watermark-greenlist)
-- **⚖️ AI governance & audit** — 50 repos. Controls, evidence, regulatory mapping, incident response.
-  - [audit-trail](https://github.com/ramtoo-cell/audit-trail) · [policy-engine](https://github.com/ramtoo-cell/policy-engine) · [eu-ai-act-mapper](https://github.com/ramtoo-cell/eu-ai-act-mapper) · [control-mapper](https://github.com/ramtoo-cell/control-mapper) · [model-risk-register](https://github.com/ramtoo-cell/model-risk-register) · [kill-switch](https://github.com/ramtoo-cell/kill-switch)
-- **🤖 Agentic systems** — 100 repos. Agent loops, memory, MCP, orchestration, sandboxing, markets.
-  - [react-loop](https://github.com/ramtoo-cell/react-loop) · [mcp-server](https://github.com/ramtoo-cell/mcp-server) · [hitl-approvals](https://github.com/ramtoo-cell/hitl-approvals) · [fs-jail](https://github.com/ramtoo-cell/fs-jail) · [contract-net](https://github.com/ramtoo-cell/contract-net) · [trajectory-replayer](https://github.com/ramtoo-cell/trajectory-replayer)
+Every repository is a small, sharp, self-contained primitive: zero external dependencies, deterministic `unittest` suite, and single-concern design. **[Browse the full catalog →](https://github.com/ramtoo-cell/ai-portfolio-index)**
 
-## 📊 Stats
+<table>
+<tr>
+<td width="33%" valign="top">
 
-[![Ram's GitHub stats](https://github-readme-stats.vercel.app/api?username=ramtoo-cell&show_icons=true&theme=transparent&hide_border=true&count_private=false)](https://github.com/ramtoo-cell)
-[![Top languages](https://github-readme-stats.vercel.app/api/top-langs/?username=ramtoo-cell&layout=compact&theme=transparent&hide_border=true)](https://github.com/ramtoo-cell)
+**🛡️ AI Safety, Evals & Alignment**<br>
+<sub>100+ repos</sub>
 
-## How I build
+Red-teaming, interpretability, unlearning, watermarking, calibration.
 
-| Principle | In practice |
-| --- | --- |
-| **Evidence over assertion** | Decisions, prompts, and tool calls are hash-chained and can be replayed. If it wasn't logged, it didn't happen. |
-| **Reasoning, not recall** | Evals test whether a model works through a constraint, not whether it memorized the answer. Gold cases are hand-built, with rubrics. |
-| **Default deny** | Egress, file system, tools, and quotas start closed. Agents get capabilities one at a time, on purpose. |
-| **Small, sharp primitives** | One concern per repo, standard library first, deterministic tests. Adopt one piece without taking all of them. |
-| **Controls map to frameworks** | Every control traces to the EU AI Act, NIST AI RMF, ISO 42001, or SOC 2 — audit becomes a query instead of a project. |
-| **Humans hold the keys** | Approval queues, escalation ladders, a two-person kill switch. Autonomy is granted, never assumed. |
+- [frontier-reasoning-bench](https://github.com/ramtoo-cell/frontier-reasoning-bench)
+- [policy-reasoning-bench](https://github.com/ramtoo-cell/policy-reasoning-bench)
+- [reasoning-eval-harness](https://github.com/ramtoo-cell/reasoning-eval-harness)
+- [reasoning-paired-evals](https://github.com/ramtoo-cell/reasoning-paired-evals)
+- [ai-safety-jailbreak-fuzzer](https://github.com/ramtoo-cell/ai-safety-jailbreak-fuzzer)
+- [ai-safety-tripwire-eval](https://github.com/ramtoo-cell/ai-safety-tripwire-eval)
+- [ai-safety-circuit-graph](https://github.com/ramtoo-cell/ai-safety-circuit-graph)
+- [ai-safety-sycophancy-eval](https://github.com/ramtoo-cell/ai-safety-sycophancy-eval)
 
-## Background
+</td>
+<td width="33%" valign="top">
 
-- **Education:** Chicago Booth MBA (Honors) · Purdue M.S. Artificial Intelligence *(in progress)* · CISA *(in progress)*
-- **Research:** 1 AI patent filed, 1 in preparation · 4 published AI disclosures
-- **Focus:** model risk, reasoning evals, AI audit trails, red-teaming, agent safety
+**⚖️ AI Governance & Policy-as-Code**<br>
+<sub>60+ repos</sub>
 
-Building in public, delivering concrete results. If you work on AI reasoning evals, assurance, or audit automation, let's talk — open an issue on any repo.
+Controls, evidence pipelines, statutory mapping, incident response.
+
+- [agentgate](https://github.com/ramtoo-cell/agentgate)
+- [agent-guardian](https://github.com/ramtoo-cell/agent-guardian)
+- [awesome-ai-governance](https://github.com/ramtoo-cell/awesome-ai-governance)
+- [ai-governance-audit-trail](https://github.com/ramtoo-cell/ai-governance-audit-trail)
+- [ai-governance-policy-engine](https://github.com/ramtoo-cell/ai-governance-policy-engine)
+- [ai-governance-eu-ai-act-mapper](https://github.com/ramtoo-cell/ai-governance-eu-ai-act-mapper)
+- [ai-governance-model-risk-register](https://github.com/ramtoo-cell/ai-governance-model-risk-register)
+- [ai-governance-kill-switch](https://github.com/ramtoo-cell/ai-governance-kill-switch)
+
+</td>
+<td width="33%" valign="top">
+
+**🤖 Agentic Systems & Verification**<br>
+<sub>100+ repos</sub>
+
+Agent loops, MCP servers, sandboxing, contract nets, trajectory replay.
+
+- [agent-react-loop](https://github.com/ramtoo-cell/agent-react-loop)
+- [agent-mcp-server](https://github.com/ramtoo-cell/agent-mcp-server)
+- [agent-hitl-approvals](https://github.com/ramtoo-cell/agent-hitl-approvals)
+- [agentic-fs-jail](https://github.com/ramtoo-cell/agentic-fs-jail)
+- [agentic-contract-net](https://github.com/ramtoo-cell/agentic-contract-net)
+- [agent-trajectory-replayer](https://github.com/ramtoo-cell/agent-trajectory-replayer)
+- [govops-model-card-diff](https://github.com/ramtoo-cell/govops-model-card-diff)
+- [govops-release-checklist](https://github.com/ramtoo-cell/govops-release-checklist)
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📐 Engineering & Research Principles
+
+| Principle | In Practice |
+| :--- | :--- |
+| **Step-Level Process Verification** | Outcome accuracy masks flawed deduction. Evals verify intermediate domain invariants (Myerson-Satterthwaite, SDL Axiom D, Bayes coherence, *lex specialis*) at every step. |
+| **Calibration Alongside Accuracy** | A model that knows when it doesn't know is safer than one that hallucinates with high confidence. Every harness reports ECE and paired discordance $p$-values. |
+| **Evidence Over Assertion** | Every prompt, reasoning trace, policy decision, and tool call is hash-chained in an append-only ledger. If it wasn't cryptographically logged, it didn't happen. |
+| **Default Deny & Capability Isolation** | Egress, filesystem paths, MCP tools, and token budgets start closed. Capabilities are granted one at a time, with explicit human-in-the-loop escalation. |
+| **Zero-Dependency Reproducibility** | Pure Python 3 standard library first, deterministic unit tests, sub-millisecond execution, and explicit design docs with threat models. |
+
+---
+
+## 🎓 Background
+
+- **Education:** **The University of Chicago Booth School of Business** — MBA (Honors) · **Purdue University** — M.S. in Artificial Intelligence *(in progress)* · Chartered Accountant (CA) · CISA *(in progress)*
+- **Intellectual Property:** 2 USPTO AI patent applications pending · 4 published AI defensive disclosures
+- **Experience:** 18+ years leading technology risk architecture, IT audit innovation, and governance engineering across Tier-0 global financial institutions and Big Four advisory (PwC)
+- **Research Focus:** Conceptual reasoning evals (economics, law, policy, philosophy, cognitive science), process supervision, epistemic calibration, and zero-trust agentic governance
+
+<br>
+
+<sub>Building in public. If you work on frontier reasoning evaluations, scalable oversight, or agent assurance at Anthropic, Google DeepMind, or OpenAI, let's connect via <a href="https://www.linkedin.com/in/ramkumar-bharathan-vicepresidenttechnologybusinessprocessauditinnovation">LinkedIn</a> or open an issue on any repository.</sub>
