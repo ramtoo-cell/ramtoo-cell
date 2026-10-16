@@ -43,9 +43,11 @@ git clone https://github.com/ramtoo-cell/frontier-reasoning-bench && cd frontier
 **Standalone evaluation harness for accuracy, epistemic calibration, and failure-mode clustering:**
 - Measures **Expected Calibration Error (ECE)** and Brier scores alongside rubric accuracy—distinguishing calibrated uncertainty from overconfident hallucination.
 
-### [`reasoning-paired-evals`](https://github.com/ramtoo-cell/reasoning-paired-evals) &nbsp;[![stats](https://img.shields.io/badge/inference-Bootstrap_%2B_McNemar-purple.svg)](https://github.com/ramtoo-cell/reasoning-paired-evals)
-**Paired statistical inference for model-vs-model reasoning evaluation:**
-- Implements non-parametric paired bootstrap confidence intervals and exact binomial **McNemar discordance tests** on off-diagonal transitions ($b$ vs. $c$), isolating genuine reasoning improvements from prompt variance.
+### [`reasoning-paired-evals`](https://github.com/ramtoo-cell/reasoning-paired-evals) · [`reasoning-calibration-audit`](https://github.com/ramtoo-cell/reasoning-calibration-audit) · [`reasoning-rubric-reliability`](https://github.com/ramtoo-cell/reasoning-rubric-reliability)
+**Statistical & psychometric rigor for reasoning benchmarks:**
+- **Paired Inference (`reasoning-paired-evals`):** Non-parametric paired bootstrap confidence intervals and exact binomial **McNemar discordance tests** on off-diagonal transitions ($b$ vs. $c$).
+- **Abstention & Selective Prediction (`reasoning-calibration-audit`):** Risk-coverage curves and selective-abstention thresholds for determining when a reasoning system should abstain rather than answer overconfidently.
+- **Inter-Rater Agreement (`reasoning-rubric-reliability`):** Psychometric reliability auditing across human/LLM judges to measure whether reviewers agree on the subjective judgments a benchmark depends on.
 
 ### [`anthropic-fellowships-2027`](https://github.com/ramtoo-cell/anthropic-fellowships-2027) &nbsp;[![dossier](https://img.shields.io/badge/Anthropic_Fellowship-Conceptual_Reasoning_Dossier-orange.svg)](https://github.com/ramtoo-cell/anthropic-fellowships-2027)
 - Complete research agenda, [Statement of Purpose](https://github.com/ramtoo-cell/anthropic-fellowships-2027/blob/main/statements/CONCEPTUAL_REASONING_FELLOW_STATEMENT.md), and [5-Discipline Verification Report](https://github.com/ramtoo-cell/anthropic-fellowships-2027/blob/main/benchmarks/FRONTIER_REASONING_EVALS_REPORT.md).
